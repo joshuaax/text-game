@@ -14,4 +14,6 @@ namespace textgame
             spaces = new Space[size_x, size_y, size_z];
         }
     }
+
+
 }
