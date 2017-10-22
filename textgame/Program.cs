@@ -10,6 +10,15 @@ namespace textgame
     {
         static void Main(string[] args)
         {
+            Methods.Initialize();
+            
+
         }
+
+
+
+
+        public const bool debug = true; //debug messages will be displayed if true
+
     }
 }

@@ -8,11 +8,20 @@ namespace textgame
 {
     public static class Actions
     {
-        static string command;          //full player-entered command
+        //static string command;          //full player-entered command
         static int minCommandChars;     //the minimum number of characters of the command string that may be entered
 
-        static void Move(string direction)
+        public static void Move(string input)
         {
+            Direction direction = Methods.GetDirection(input);
+            if (direction == Direction.Invalid)
+            {
+                Console.WriteLine(input + " is not a valid direction.");
+            }
+            else
+            {
+            //    if();
+            }
         }
 
         static void Look()

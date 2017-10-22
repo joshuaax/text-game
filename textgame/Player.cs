@@ -14,6 +14,8 @@ namespace textgame
         int yLocation;
         int zLocation;
 
+
+
         public Player(string _name)
         {
             name = _name;
@@ -21,6 +23,11 @@ namespace textgame
             xLocation = 0;
             yLocation = 0;
             zLocation = 0;
+        }
+
+        public Space GetPlayerSpace()
+        {
+            return;
         }
     }
 }

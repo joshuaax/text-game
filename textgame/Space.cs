@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace textgame
 {
-    public enum Direction { North, South, East, West, Up, Down};
+    public enum Direction { North, South, East, West, Up, Down, Invalid};
     public class Space
     {
-        List<Exit> exits;
-        bool isLit;
-        Inventory inv;
+        public List<Exit> exits;
+        public bool isLit;
+        public Inventory inv;
+        public string description;
 
         public Space()
         {
@@ -24,5 +25,6 @@ namespace textgame
             bool passable;
             string message;
         }
+
     }
 }
