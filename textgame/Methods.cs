@@ -11,7 +11,7 @@ namespace textgame
         const string commandMove = "walk";
         const string commandLook = "look";
 
-        static void ProcessInput(string input)
+        public static void ProcessInput(string input)
         {
             string[] inputList = input.Split(' ');
             switch (inputList[0])
@@ -78,12 +78,15 @@ namespace textgame
             }
         }
 
-        public static void Initialize()
+        public static void Initialize(Map map)
         {
             Console.WriteLine("Press any key to begin.");
             Console.ReadKey();
 
-            //create a new Player
+            //Initialize the Map
+            map = new Map(3, 3, 3);
+
+            //Create a new Player
             while (true)
             {
                 Console.WriteLine("Enter character name:");
@@ -104,9 +107,6 @@ namespace textgame
                     }
                 }
             }
-
-            //Initialize the Map
-            Map map = new Map(3, 3, 3);
         }
 
         public static void Debug(string message)

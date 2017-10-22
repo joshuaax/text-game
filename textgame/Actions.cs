@@ -24,12 +24,13 @@ namespace textgame
             }
         }
 
-        static void Look()
+        public static void Look(Space s)
         {
-            Console.WriteLine("");
+            Console.WriteLine(s.description);
+            s.DisplayExits();
         }
 
-        static void LookDirection(string direction)
+        public static void LookDirection(string direction)
         {
             Console.WriteLine("");
         }

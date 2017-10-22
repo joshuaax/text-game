@@ -8,13 +8,11 @@ namespace textgame
 {
     public class Player
     {
-        string name;
-        int defaultInventorySize = 20;
-        int xLocation;
-        int yLocation;
-        int zLocation;
-
-
+        public string name;
+        public int defaultInventorySize = 20;
+        public int xLocation;
+        public int yLocation;
+        public int zLocation;
 
         public Player(string _name)
         {
@@ -25,9 +23,9 @@ namespace textgame
             zLocation = 0;
         }
 
-        public Space GetPlayerSpace()
+        public Space GetPlayerSpace(Map map)
         {
-            return;
+            return map.spaces[xLocation, yLocation, zLocation];
         }
     }
 }
