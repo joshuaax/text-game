@@ -17,8 +17,12 @@ namespace textgame
         public int yPos;
         public int zPos;
 
-        public Space()
+        public Space(int _xPos, int _yPos, int _zPos)
         {
+            xPos = _xPos;
+            yPos = _yPos;
+            zPos = _zPos;
+
             exits = new List<Exit>();
             description = "You find yourself in a space.";
         }
@@ -52,6 +56,18 @@ namespace textgame
                     Console.Write(", ");
                 }
             }
+        }
+
+        public bool IsValidExitDirection(Direction direction)
+        {
+            foreach(Exit e in exits)
+            {
+                if (e.direction == direction)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

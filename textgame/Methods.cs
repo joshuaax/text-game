@@ -8,30 +8,7 @@ namespace textgame
 {
     public static class Methods
     {
-        const string commandMove = "walk";
-        const string commandLook = "look";
-
-        public static void ProcessInput(string input)
-        {
-            string[] inputList = input.Split(' ');
-            switch (inputList[0])
-            {
-                case commandMove:
-                    if (string.IsNullOrEmpty(inputList[1]))
-                    {
-                        Console.WriteLine("Move where?");
-                        break;
-                    }
-
-
-
-                    //foreach (Space.Exit exit in )
-                    break;
-                case commandLook:
-                    break;
-            }
-        }
-        public static bool? IsYesOrNo(string input)
+        public static bool? YesOrNo(string input)
         {
             if (string.Equals(input, "yes") || string.Equals(input, "y"))
             {
@@ -46,6 +23,7 @@ namespace textgame
                 return null;
             }
         }
+
         public static Direction GetDirection(string input)
         {
             if (string.Equals(input, "north") || string.Equals(input, "n"))
@@ -78,6 +56,30 @@ namespace textgame
             }
         }
 
+        public static string GetNewName()
+        {
+            string enteredName;
+            string input;
+
+            while (true)
+            {
+                Console.WriteLine("Enter character name:");
+                enteredName = Console.ReadLine();
+                Console.WriteLine(string.Format("You have entered: \n{0}\nIs this correct?", enteredName));
+                input = Console.ReadLine();
+                if (Methods.YesOrNo(input) == null)
+                {
+                    Console.WriteLine("C'mon. Please enter yes or no, y or n.");
+                    Console.ReadLine();
+                }
+                else if (Methods.YesOrNo(input) == true)
+                {
+                    return enteredName;
+                }
+            }
+        }
+        
+        /*
         public static void Initialize(Map map)
         {
             Console.WriteLine("Press any key to begin.");
@@ -93,14 +95,14 @@ namespace textgame
                 string enteredName = Console.ReadLine();
                 Console.WriteLine(string.Format("You have entered: \n{0}\nIs this correct?"));
                 string input = Console.ReadLine();
-                if (Methods.IsYesOrNo(input) == null)
+                if (Methods.YesOrNo(input) == null)
                 {
                     Console.WriteLine("C'mon. Please enter yes or no, y or n.");
                     Console.ReadLine();
                 }
                 else
                 {
-                    if (Methods.IsYesOrNo(input) ?? true)
+                    if (Methods.YesOrNo(input) ?? true)
                     {
                         Player player = new Player(enteredName);
                         break;
@@ -108,6 +110,7 @@ namespace textgame
                 }
             }
         }
+        */
 
         public static void Debug(string message)
         {
