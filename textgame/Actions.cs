@@ -20,12 +20,13 @@ namespace textgame
             }
             else if (player.GetPlayerSpace(map).IsValidExitDirection(direction))
             {
-                if (direction == Direction.North) player.yLocation++;
-                if (direction == Direction.South) player.yLocation--;
-                if (direction == Direction.East)  player.xLocation++;
-                if (direction == Direction.West)  player.xLocation--;
-                if (direction == Direction.Up)    player.zLocation++;
-                if (direction == Direction.Down)  player.zLocation--;
+                //if (direction == Direction.North) player.yLocation++;
+                //if (direction == Direction.South) player.yLocation--;
+                //if (direction == Direction.East)  player.xLocation++;
+                //if (direction == Direction.West)  player.xLocation--;
+                //if (direction == Direction.Up)    player.zLocation++;
+                //if (direction == Direction.Down)  player.zLocation--;
+                player.playerSpace = map.spaceInDirection(player.playerSpace, direction);
             }
             else
             {
@@ -39,9 +40,10 @@ namespace textgame
             s.DisplayExits();
         }
 
-        public static void LookDirection(string direction)
+        public static void LookDirection(Map map, Space currentSpace, Direction direction)
         {
-            Console.WriteLine("");
+            Console.WriteLine(string.Format("You look {0}.", direction.ToString()));
+            Console.WriteLine(map.spaceInDirection(currentSpace, direction).description);
         }
     }
 }

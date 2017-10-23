@@ -15,8 +15,8 @@ namespace textgame
         {
             //Create a new Player
             string enteredName = Methods.GetNewName();
-            player = new Player(enteredName);
             map = new Map(3, 3, 3);
+            player = new Player(enteredName, map);
         }
 
         List<string> moveCommands = new List<string>{
@@ -44,20 +44,20 @@ namespace textgame
                 return;
             }
 
-            if (player.GetPlayerSpace(map).IsValidExitDirection(Methods.GetDirection(words[0])));
+            if (player.playerSpace.IsValidExitDirection(Methods.GetDirection(words[0])));
 
             if (lookCommands.Contains(words[0]))
             {
                 if (words.Length == 1)
                 {
-                    Actions.Look(player.GetPlayerSpace(map));
+                    Actions.Look(player.playerSpace);
                     return;
                 }
                 else if (words.Length == 2)
                 {
                     if (player.GetPlayerSpace(map).IsValidExitDirection(Methods.GetDirection(words[1])))
                     {
-                        Actions.LookDirection(words[1]);
+                        Actions.LookDirection(map, player.GetPlayerSpace(map), Methods.GetDirection(words[1]));
                     }
                     else if(Methods.GetDirection(words[1]) != Direction.Invalid)
                     {

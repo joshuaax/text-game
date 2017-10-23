@@ -50,9 +50,38 @@ namespace textgame
             }
         }
 
-        public Space spaceInDirection(Space currentSpace)
+        public Space spaceInDirection(Space currentSpace, Direction direction)
         {
-
+            if (currentSpace.IsValidExitDirection(direction))
+            {
+                if (direction == Direction.North)
+                {
+                    return spaces[currentSpace.xPos, currentSpace.yPos + 1, currentSpace.zPos];
+                }
+                if (direction == Direction.South)
+                {
+                    return spaces[currentSpace.xPos, currentSpace.yPos - 1, currentSpace.zPos];
+                }
+                if (direction == Direction.East) if (direction == Direction.South)
+                {
+                    return spaces[currentSpace.xPos + 1, currentSpace.yPos, currentSpace.zPos];
+                }
+                if (direction == Direction.West) if (direction == Direction.South)
+                {
+                    return spaces[currentSpace.xPos - 1, currentSpace.yPos, currentSpace.zPos];
+                }
+                if (direction == Direction.Up) if (direction == Direction.South)
+                {
+                    return spaces[currentSpace.xPos, currentSpace.yPos, currentSpace.zPos + 1];
+                }
+                if (direction == Direction.Down) if (direction == Direction.South)
+                {
+                    return spaces[currentSpace.xPos, currentSpace.yPos, currentSpace.zPos - 1];
+                }
+            }
+            //shouldn't get here
+            Methods.Debug("spaceInDirection problem");
+            return currentSpace;
         }
     }
 }

@@ -10,17 +10,19 @@ namespace textgame
     {
         public string name;
         public int defaultInventorySize = 20;
-        public int xLocation;
-        public int yLocation;
-        public int zLocation;
+        public Space playerSpace;
+        //public int xLocation;
+        //public int yLocation;
+        //public int zLocation;
 
-        public Player(string _name)
+        public Player(string _name, Map map)
         {
             name = _name;
             Inventory inv = new Inventory(defaultInventorySize);
-            xLocation = 0;
-            yLocation = 0;
-            zLocation = 0;
+            playerSpace = map.spaces[0, 0, 0];
+            //xLocation = 0;
+            //yLocation = 0;
+            //zLocation = 0;
         }
 
         public Space GetPlayerSpace(Map map)
