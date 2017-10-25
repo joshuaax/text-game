@@ -25,9 +25,11 @@ namespace textgame
             //zLocation = 0;
         }
 
+        /*
         public Space GetPlayerSpace(Map map)
         {
             return map.spaces[xLocation, yLocation, zLocation];
         }
+        */
     }
 }

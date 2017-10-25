@@ -36,15 +36,28 @@ namespace textgame
             {
                 if (words.Length == 1)
                 {
-                    Console.WriteLine("Move where?");
+                    Console.WriteLine("Walk where?");
                     return;
                 }
 
-                Actions.Move(words[1], player, map);
+                Actions.Move(Methods.GetDirection(words[0]), player, map);
                 return;
             }
 
-            if (player.playerSpace.IsValidExitDirection(Methods.GetDirection(words[0])));
+            Direction direction = Methods.GetDirection(words[0]);
+            //if the user entered a valid direction
+            if(direction != Direction.Invalid)
+            {
+                //if there were multiple words entered
+                if (words.Length > 1)
+                {
+                    Console.WriteLine("Enter a direction by itself to go that way.");
+                }
+                else
+                {
+                    Actions.Move(direction, player, map);
+                }
+            }
 
             if (lookCommands.Contains(words[0]))
             {
@@ -55,9 +68,9 @@ namespace textgame
                 }
                 else if (words.Length == 2)
                 {
-                    if (player.GetPlayerSpace(map).IsValidExitDirection(Methods.GetDirection(words[1])))
+                    if (player.playerSpace.IsPassableExitDirection(Methods.GetDirection(words[1])))
                     {
-                        Actions.LookDirection(map, player.GetPlayerSpace(map), Methods.GetDirection(words[1]));
+                        Actions.LookDirection(map, player.playerSpace, Methods.GetDirection(words[1]));
                     }
                     else if(Methods.GetDirection(words[1]) != Direction.Invalid)
                     {
@@ -74,6 +87,7 @@ namespace textgame
                 }
             }
 
+            /*
             switch (inputList[0])
             {
                 case commandMove:
@@ -91,6 +105,7 @@ namespace textgame
                     Console.WriteLine("Unrecognized input.");
                     break;
             }
+            */
         }
     }
 }

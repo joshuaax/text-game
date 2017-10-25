@@ -11,22 +11,19 @@ namespace textgame
         //static string command;          //full player-entered command
         //static int minCommandChars;     //the minimum number of characters of the command string that may be entered
 
-        public static void Move(string input, Player player, Map map)
+        public static void Move(Direction direction, Player player, Map map)
         {
-            Direction direction = Methods.GetDirection(input);
             if (direction == Direction.Invalid)
             {
-                Console.WriteLine(input + " is not a valid direction.");
+                //shouldn't happen
+                Methods.Debug("Move was passed an invalid direction.");
             }
-            else if (player.GetPlayerSpace(map).IsValidExitDirection(direction))
+            else if (player.playerSpace.IsPassableExitDirection(direction))
             {
-                //if (direction == Direction.North) player.yLocation++;
-                //if (direction == Direction.South) player.yLocation--;
-                //if (direction == Direction.East)  player.xLocation++;
-                //if (direction == Direction.West)  player.xLocation--;
-                //if (direction == Direction.Up)    player.zLocation++;
-                //if (direction == Direction.Down)  player.zLocation--;
+                //move the player
                 player.playerSpace = map.spaceInDirection(player.playerSpace, direction);
+                //look around
+                Actions.Look(player.playerSpace);
             }
             else
             {

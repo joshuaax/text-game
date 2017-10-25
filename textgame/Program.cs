@@ -17,12 +17,11 @@ namespace textgame
             //creates the player and the map
             Session session = new Session();
             
-            Actions.Look(session.player.GetPlayerSpace(session.map));
+            Actions.Look(session.player.playerSpace);
             while (true)
             {
                 Console.WriteLine();
-                input = Console.ReadLine();
-                Methods.ProcessInput(input, player, map);
+                session.ProcessInput(Console.ReadLine());
             }
         }
         

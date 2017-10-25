@@ -58,7 +58,7 @@ namespace textgame
             }
         }
 
-        public bool IsValidExitDirection(Direction direction)
+        public bool IsPassableExitDirection(Direction direction)
         {
             foreach(Exit e in exits)
             {

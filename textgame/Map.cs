@@ -52,7 +52,7 @@ namespace textgame
 
         public Space spaceInDirection(Space currentSpace, Direction direction)
         {
-            if (currentSpace.IsValidExitDirection(direction))
+            if (currentSpace.IsPassableExitDirection(direction))
             {
                 if (direction == Direction.North)
                 {
@@ -62,19 +62,19 @@ namespace textgame
                 {
                     return spaces[currentSpace.xPos, currentSpace.yPos - 1, currentSpace.zPos];
                 }
-                if (direction == Direction.East) if (direction == Direction.South)
+                if (direction == Direction.East)
                 {
                     return spaces[currentSpace.xPos + 1, currentSpace.yPos, currentSpace.zPos];
                 }
-                if (direction == Direction.West) if (direction == Direction.South)
+                if (direction == Direction.West)
                 {
                     return spaces[currentSpace.xPos - 1, currentSpace.yPos, currentSpace.zPos];
                 }
-                if (direction == Direction.Up) if (direction == Direction.South)
+                if (direction == Direction.Up)
                 {
                     return spaces[currentSpace.xPos, currentSpace.yPos, currentSpace.zPos + 1];
                 }
-                if (direction == Direction.Down) if (direction == Direction.South)
+                if (direction == Direction.Down)
                 {
                     return spaces[currentSpace.xPos, currentSpace.yPos, currentSpace.zPos - 1];
                 }
